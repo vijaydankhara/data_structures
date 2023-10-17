@@ -68,7 +68,7 @@ int Last_delete()
     }
     else
     {
-        r++;
+        r--;
     }
 }
 
