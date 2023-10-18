@@ -2,7 +2,7 @@
 #define n 5
 int a[n] , f =-1 , r =-1;
 
-int first_Insert(int data)
+int End_Insert(int data)
 {
     if(r >= n-1)
     {
@@ -52,11 +52,12 @@ int display()
 
 int main()
 {
-    first_Insert(10);
-    first_Insert(20);
-    first_Insert(30);
-    first_Insert(40);
-    first_Insert(50);
-    first_Delete(40);
+    End_Insert(10);
+    End_Insert(20);
+    End_Insert(30);
+    End_Insert(40);
+    //first_Insert(50);
+    End_Insert(40);
+    End_Insert(99);
     display();
 }

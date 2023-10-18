@@ -4,65 +4,66 @@ int a[n], f = -1, r = -1, ch;
 
 int first_Insert(int data)
 {
-    if (r >= n - 1)
-    {
-        printf("Queue Is Full...");
-    }
-    else if (f < 0)
+    if (f < 0)
     {
         f = r = 0;
-        a[r] = data;
+        a[f] = data;
+    }
+    else if (f == 0)
+    {
+        printf("==> || DO NOT PERFORM HEAR || <== \n");
     }
     else
     {
-        r++;
-        a[r] = data;
+        f--;
+        a[f] = data;
     }
 }
 
 int first_Delete()
 {
-    if (f == r)
+    if (f < 0)
     {
         printf("Queue Is Empty...");
         return -1;
     }
-    else if (f < 0)
+    else if (f == r)
     {
         f = r = -1;
     }
     else
     {
-        f++;
+        f=(f+1)%n;
     }
 }
 
+
 int Last_insert(int data)
 {
-   if (r >= n - 1)
+    if (r < 0)
     {
-        printf("Queue Is Full...");
-    }
-    else if (f < 0)
-    {
-        f = r = 0;
+       f = r = 0;
         a[r] = data;
+    }
+    else if ((r+1)%n==f)
+    {
+         printf("Queue Is Full...");
     }
     else
     {
-        r++;
+        r=(r+1)%n;
         a[r] = data;
     }
 }
 
 int Last_delete()
 {
-    if (f == r)
+
+    if (r < 0)
     {
         printf("Queue Is Empty...");
-        return -1;
     }
-    else if (f < 0)
+    else if (r == f)
     {
         f = r = -1;
     }
@@ -72,18 +73,12 @@ int Last_delete()
     }
 }
 
-
 int display()
 {
-    if (f < 0)
-    {
-        printf("queue is empty...");
-    }
-
-    for (int i = f; i <= r; i++)
-    {
-        printf("%d\t", a[i]);
-    }
+        for (int i = f; i <= r; i++)
+        {
+            printf("%d\t", a[i]);
+        }
 }
 
 int main()
