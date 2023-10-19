@@ -1,68 +1,64 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void merge(int a[],int l,int mid,int h)
+void merge(int a[], int l, int mid, int h)
 {
     int b[50];
-    int i=l,j=mid+1,k=l;
-    while (i<=mid && j<=h)
+    int i = l, j = mid + 1, k = l;
+    while (i <= mid && j <= h)
     {
-        if (a[i]<a[j])
+        if (a[i] < a[j])
         {
-            b[k++]=a[i++];
-
-        }else
-        {
-            b[k++]=a[j++];
+            b[k++] = a[i++];
         }
-        
+        else
+        {
+            b[k++] = a[j++];
+        }
     }
-    while (i<=mid)
+    while (i <= mid)
     {
-        b[k++]=a[i++];
+        b[k++] = a[i++];
     }
-    while (j<=h)
+    while (j <= h)
     {
-        b[k++]=a[j++];
+        b[k++] = a[j++];
     }
-    for(i=l;i<=h;i++)
-    a[i]=b[i];
-    
+    for (i = l; i <= h; i++)
+        a[i] = b[i];
 }
 
-int MergeSort(int a[],int l, int h)
+int MergeSort(int a[], int l, int h)
 {
     int mid;
-    if(l<h)
+    if (l < h)
     {
-        mid=(l+h)/2;
-        MergeSort(a,l,mid);
-        MergeSort(a,mid+1,h);
-        merge(a,l,mid,h);
+        mid = (l + h) / 2;
+        MergeSort(a, l, mid);
+        MergeSort(a, mid + 1, h);
+        merge(a, l, mid, h);
     }
 }
-
-
 
 int main()
 {
-    int a[7],n=7,i;
-    for(i=0;i<n;i++)
-    a[i]=rand()%99+1;
+    int a[7], n = 7, i;
+    for (i = 0; i < n; i++)
+        a[i] = rand() % 99 + 1;
 
-     printf("\n*****************************************************\n");
-     printf("\t==> || Befor Sorting Array Is || <== \n");
-     printf("*****************************************************\n");
-    for(i=0;i<n;i++)
-    printf("%d\t",a[i]);
+    printf("\n*****************************************************\n");
+    printf("\t==> || Befor Sorting Array Is || <== \n");
+    printf("*****************************************************\n");
+    for (i = 0; i < n; i++)
+        printf("%d\t", a[i]);
 
-    MergeSort(a,0,n-1);
+    MergeSort(a, 0, n - 1);
 
     printf("\n*****************************************************\n");
     printf("\n\n*****************************************************");
     printf("\n\t==> || After Sorting Array Is || <==  \n");
     printf("*****************************************************\n");
-    for(i=0;i<n;i++)
-    printf("%d\t",a[i]);
+    for (i = 0; i < n; i++)
+        printf("%d\t", a[i]);
     printf("\n*****************************************************\n");
 }
